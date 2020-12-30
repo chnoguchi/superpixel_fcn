@@ -4,7 +4,8 @@ import torch.backends.cudnn as cudnn
 import models
 import torchvision.transforms as transforms
 import flow_transforms
-from scipy.ndimage import imread
+# from scipy.ndimage import imread
+from scipy.imageio import imread
 from scipy.misc import imsave, imresize
 from loss import *
 import time
