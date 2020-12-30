@@ -7,7 +7,8 @@ import flow_transforms
 # from scipy.ndimage import imread
 # import scipy
 from imageio import imread
-from scipy.misc import imsave, imresize
+# from scipy.misc import imsave, imresize
+from imageio import imsave
 from loss import *
 import time
 import random
