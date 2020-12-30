@@ -26,7 +26,7 @@ usage:
 results will be saved at the args.output
 '''
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 model_names = sorted(name for name in models.__dict__
                      if name.islower() and not name.startswith("__"))
