@@ -5,6 +5,7 @@ import models
 import torchvision.transforms as transforms
 import flow_transforms
 # from scipy.ndimage import imread
+import scipy
 from scipy.imageio import imread
 from scipy.misc import imsave, imresize
 from loss import *
