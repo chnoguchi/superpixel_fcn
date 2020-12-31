@@ -45,8 +45,8 @@ parser.add_argument('--savepath',default='', help='path to save ckpt')
 
 parser.add_argument('--train_img_height', '-t_imgH', default=512,  type=int, help='img height')
 parser.add_argument('--train_img_width', '-t_imgW', default=1024, type=int, help='img width')
-parser.add_argument('--input_img_height', '-v_imgH', default=320, type=int, help='img height_must be 16*n')  #
-parser.add_argument('--input_img_width', '-v_imgW', default=320,  type=int, help='img width must be 16*n')
+parser.add_argument('--input_img_height', '-v_imgH', default=1024, type=int, help='img height_must be 16*n')  #
+parser.add_argument('--input_img_width', '-v_imgW', default=2048,  type=int, help='img width must be 16*n')
 
 # ======== learning schedule ================
 parser.add_argument('-j', '--workers', default=4, type=int, metavar='N',help='number of data loading workers')
@@ -260,7 +260,7 @@ def train(train_loader, model, optimizer, epoch, train_writer, init_spixl_map_id
             optimizer.load_state_dict(state_dict)
 
         # ========== complete data loading ================
-        label_1hot = label2one_hot_torch(label.to(device), C=50) # set C=50 as SSN does
+        label_1hot = label2one_hot_torch(label.to(device), C=20) # set C=50 as SSN does
         input_gpu = input.to(device)
         LABXY_feat_tensor = build_LABXY_feat(label_1hot, xy_feat)  # B* (50+2 )* H * W
         torch.cuda.synchronize()
@@ -351,7 +351,7 @@ def validate(val_loader, model, epoch, val_writer, init_spixl_map_idx, xy_feat):
     for i, (input, label) in enumerate(val_loader):
 
         # measure data loading time
-        label_1hot = label2one_hot_torch(label.to(device), C=50)
+        label_1hot = label2one_hot_torch(label.to(device), C=20)
         input_gpu = input.to(device)
         LABXY_feat_tensor = build_LABXY_feat(label_1hot, xy_feat)  # B* 50+2 * H * W
         torch.cuda.synchronize()
