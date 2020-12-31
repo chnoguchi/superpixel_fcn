@@ -19,7 +19,7 @@ class ListDataset(data.Dataset):
         self.datatype = datatype
 
         # create id map
-        with open('config.json') as config_file:
+        with open('datasets/config.json') as config_file:
             self.labels = json.load(config_file)['labels']
         self.id2trainId = {d['id']: voidId if d['trainId'] == 255 else d['trainId'] for d in self.labels}
 
