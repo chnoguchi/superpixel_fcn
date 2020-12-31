@@ -78,13 +78,13 @@ def Cityscapes(root, transform=None, target_transform=None, val_transform=None,
                                 target_transform, co_transform,
                                 loader=BSD_loader, datatype = 'train')
 
-    # val_dataset = ListDataset(root, 'cityscapes', val_image_path_list, val_label_path_list, val_transform,
-    #                            target_transform, flow_transforms.CenterCrop((320,320)),
-    #                            loader=BSD_loader, datatype = 'val')
-
     val_dataset = ListDataset(root, 'cityscapes', val_image_path_list, val_label_path_list, val_transform,
-                              target_transform, co_transform=None,
-                              loader=BSD_loader, datatype='val')
+                               target_transform, flow_transforms.CenterCrop((512,1024)),
+                               loader=BSD_loader, datatype = 'val')
+
+    # val_dataset = ListDataset(root, 'cityscapes', val_image_path_list, val_label_path_list, val_transform,
+    #                           target_transform, co_transform=None,
+    #                           loader=BSD_loader, datatype='val')
 
     return train_dataset, val_dataset
 
