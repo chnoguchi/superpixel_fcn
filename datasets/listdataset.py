@@ -46,6 +46,8 @@ class ListDataset(data.Dataset):
 
         if self.co_transform is not None:
             inputs, label = self.co_transform([inputs], label)
+        else:
+            inputs = [inputs]
 
         print(inputs[0].shape)
         if self.transform is not None:
