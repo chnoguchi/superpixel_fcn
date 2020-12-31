@@ -31,8 +31,8 @@ class ListDataset(data.Dataset):
         img_path = self.img_path_list[index]
         label_path = self.label_path_list[index]
 
-        print('img_path='.format(str(img_path)))
-        print('label_path='.format(str(label_path)))
+        print('img_path={}'.format(str(img_path)))
+        print('label_path={}'.format(str(label_path)))
 
         # We do not consider other datsets in this work
         assert self.dataset == 'cityscapes'
@@ -53,6 +53,7 @@ class ListDataset(data.Dataset):
         if self.transform is not None:
             image = self.transform(inputs[0])
 
+        label = label.reshape(label.shape[0], label.shape[1], 1)
         print(label.shape)
 
         if self.target_transform is not None:
