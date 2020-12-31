@@ -31,9 +31,6 @@ class ListDataset(data.Dataset):
         img_path = self.img_path_list[index]
         label_path = self.label_path_list[index]
 
-        print('img_path={}'.format(str(img_path)))
-        print('label_path={}'.format(str(label_path)))
-
         # We do not consider other datsets in this work
         assert self.dataset == 'cityscapes'
         assert (self.transform is not None) and (self.target_transform is not None)

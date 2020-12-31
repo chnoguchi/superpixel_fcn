@@ -240,6 +240,7 @@ class RandomCrop(object):
     def __call__(self, inputs,target):
         h, w, _ = inputs[0].shape
         th, tw = self.size
+        print('h,w,th,tw = {:d},{:d},{:d},{:d}'.format(h,w,th,tw))
         if w == tw and h == th:
             return inputs,target
 
