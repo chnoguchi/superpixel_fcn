@@ -49,12 +49,12 @@ class ListDataset(data.Dataset):
         else:
             inputs = [inputs]
 
-        print(inputs[0].shape)
+        # print(inputs[0].shape)
         if self.transform is not None:
             image = self.transform(inputs[0])
 
         label = label.reshape(label.shape[0], label.shape[1], 1)
-        print(label.shape)
+        # print(label.shape)
 
         if self.target_transform is not None:
             label = self.target_transform(label)
