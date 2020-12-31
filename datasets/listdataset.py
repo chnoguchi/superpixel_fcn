@@ -26,13 +26,13 @@ class ListDataset(data.Dataset):
     def __getitem__(self, index):
         # img_path = self.img_path_list[index][:-1]
 
-        print(self.img_path_list)
+        # print(self.img_path_list)
 
         img_path = self.img_path_list[index]
         label_path = self.label_path_list[index]
 
-        print('img_path='.format(img_path))
-        print('label_path='.format(label_path))
+        print('img_path='.format(str(img_path)))
+        print('label_path='.format(str(label_path)))
 
         # We do not consider other datsets in this work
         assert self.dataset == 'cityscapes'
@@ -52,6 +52,8 @@ class ListDataset(data.Dataset):
 
         if self.transform is not None:
             image = self.transform(inputs[0])
+
+        print(label.shape)
 
         if self.target_transform is not None:
             label = self.target_transform(label)
