@@ -26,8 +26,10 @@ class ListDataset(data.Dataset):
     def __getitem__(self, index):
         # img_path = self.img_path_list[index][:-1]
 
-        img_path = self.img_path_list[index][:-1]
-        label_path = self.label_path_list[index][:-1]
+        print(self.img_path_list)
+
+        img_path = self.img_path_list[index]
+        label_path = self.label_path_list[index]
 
         print('img_path='.format(img_path))
         print('label_path='.format(label_path))
