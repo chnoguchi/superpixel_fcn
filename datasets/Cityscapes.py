@@ -1,9 +1,9 @@
 from __future__ import division
 import os.path
-# from .listdataset import ListDataset
+from .listdataset import ListDataset
 
 import numpy as np
-# import flow_transforms
+import flow_transforms
 from pathlib import Path
 
 try:
@@ -60,7 +60,7 @@ def BSD_loader(path_imgs, path_label):
     return img, gtseg
 
 
-# root = './datasets'
+# root = '../datasets/Cityscapes'
 def Cityscapes(root, transform=None, target_transform=None, val_transform=None,
               co_transform=None, split=None):
 
@@ -70,21 +70,23 @@ def Cityscapes(root, transform=None, target_transform=None, val_transform=None,
     mode = 'val'
     val_image_path_list, val_label_path_list = make_dataset_path(root, mode)
 
-    print(train_image_path_list)
 
+    if val_transform ==None:
+        val_transform = transform
 
-    # if val_transform ==None:
-    #     val_transform = transform
-    #
-    # train_dataset = ListDataset(root, 'bsd500', train_list, transform,
-    #                             target_transform, co_transform,
-    #                             loader=BSD_loader, datatype = 'train')
-    #
-    # val_dataset = ListDataset(root, 'bsd500', val_list, val_transform,
+    train_dataset = ListDataset(root, 'cityscapes', train_image_path_list, train_label_path_list, transform,
+                                target_transform, co_transform,
+                                loader=BSD_loader, datatype = 'train')
+
+    # val_dataset = ListDataset(root, 'cityscapes', val_image_path_list, val_label_path_list, val_transform,
     #                            target_transform, flow_transforms.CenterCrop((320,320)),
     #                            loader=BSD_loader, datatype = 'val')
-    #
-    # return train_dataset, val_dataset
+
+    val_dataset = ListDataset(root, 'cityscapes', val_image_path_list, val_label_path_list, val_transform,
+                              target_transform, co_transform=None,
+                              loader=BSD_loader, datatype='val')
+
+    return train_dataset, val_dataset
 
 
 if __name__ == '__main__':
