@@ -88,4 +88,4 @@ def Cityscapes(root, transform=None, target_transform=None, val_transform=None,
 
 
 if __name__ == '__main__':
-    Cityscapes('./datasets')
+    Cityscapes('../datasets/Cityscapes')
