@@ -12,6 +12,7 @@ from imageio import imsave
 from loss import *
 import time
 import random
+from pathlib import Path
 
 import sys
 sys.path.append('./third_party/cython')
@@ -66,7 +67,7 @@ def test(model, img_paths, save_path, spixeIds, idx, scale):
 
 
     img_file = img_paths[idx]
-    load_path = img_file
+    load_path = str(img_file)
     imgId = os.path.basename(img_file)[:-4]
 
     # origin size 481*321 or 321*481
@@ -165,11 +166,15 @@ def main():
         if not os.path.isdir(save_path):
             os.makedirs(save_path)
 
-        tst_lst = []
-        with open(args.test_list, 'r') as tf:
-            img_path = tf.readlines()
-            for path in img_path:
-                tst_lst.append(path[:-1])
+        # tst_lst = []
+        # with open(args.test_list, 'r') as tf:
+        #     img_path = tf.readlines()
+        #     for path in img_path:
+        #         tst_lst.append(path[:-1])
+        dir = './datasets/Cityscapes'
+        mode = 'test'
+        image_root = os.path.join(dir, 'leftImg8bit')
+        tst_lst = sorted(Path(os.path.join(image_root, mode)).glob('**/*.png'))
 
         print('{} samples found'.format(len(tst_lst)))
 
