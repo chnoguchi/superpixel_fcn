@@ -130,11 +130,11 @@ def test(model, img_paths, save_path, spixeIds, idx, scale):
     imsave(spixl_save_name, spixel_viz.transpose(1, 2, 0))
 
     # save the unique maps as csv for eval
-    if not os.path.isdir(os.path.join(save_path, 'map_csv')):
-        os.makedirs(os.path.join(save_path, 'map_csv'))
-    output_path = os.path.join(save_path, 'map_csv', imgId + '.csv')
-    # plus 1 to make it consistent with the toolkit format
-    np.savetxt(output_path, (spixel_label_map + 1).astype(int), fmt='%i', delimiter=",")
+    # if not os.path.isdir(os.path.join(save_path, 'map_csv')):
+    #     os.makedirs(os.path.join(save_path, 'map_csv'))
+    # output_path = os.path.join(save_path, 'map_csv', imgId + '.csv')
+    # # plus 1 to make it consistent with the toolkit format
+    # np.savetxt(output_path, (spixel_label_map + 1).astype(int), fmt='%i', delimiter=",")
 
 
     if idx % 10 == 0:
